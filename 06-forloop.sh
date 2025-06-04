@@ -7,3 +7,4 @@ for i in "${MOVIES[@]}"; do
     echo "Movie number $num is: $i"
     ((num++))
 done
+echo "All movies: ${MOVIES[@]}"
