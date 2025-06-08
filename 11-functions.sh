@@ -1,7 +1,7 @@
 #!/bin/bash
 
 USERID=$( id -u )
-R=\e[31m
+R=  $(\e[31m)
 if [ $USERID -ne 0 ]
 then 
     echo -e "$R ERROR: Please run with root access"
