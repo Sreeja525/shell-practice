@@ -8,7 +8,7 @@ N="\e[0m"
 
 LOGS_FOLDER=/var/log/shellscript-logs
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME_$(date +%Y-%m-%d-%T).log"
+LOG_FILE="$LOGS_FOLDER/$(SCRIPT_NAME_$(date +%Y-%m-%d-%T)).log"
 echo "creating $LOGS_FOLDER"
 sudo mkdir -p $LOGS_FOLDER
 
