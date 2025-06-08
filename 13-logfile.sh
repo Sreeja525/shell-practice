@@ -8,7 +8,7 @@ N="\e[0m"
 
 LOGS_FOLDER=/var/log/shellscript-logs
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-LOG_FILE="$LOGS_FOLDER/$(SCRIPT_NAME_$(date +%Y-%m-%d-%T)).log"
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 echo "creating $LOGS_FOLDER"
 sudo mkdir -p $LOGS_FOLDER
 
@@ -30,7 +30,7 @@ VALIDATE(){
         echo  -e " $R installing $2 is failure $N"
     fi
 }
-dnf list installed mysql
+dnf list installed mysql >> $LOG_FILE
 if [ $? -ne 0 ]
 then 
     echo -e " $Y mysql is not installed.. going to install it $N"
@@ -40,7 +40,7 @@ else
     echo -e " $G mysql is already installed $N"
 fi
 
-dnf list installed nginx
+dnf list installed nginx >> $LOG_FILE
 if [ $? -ne 0 ]
 then 
     echo -e " $Y nginx is not installed.. going to install it $N"
@@ -50,7 +50,7 @@ else
     echo -e " $G nginx is already installed $N"
 fi
 
-dnf list installed python3
+dnf list installed python3 >> $LOG_FILE
 if [ $? -ne 0 ]
 then 
     echo -e "$Y python3 is not installed.. going to install it $N"
