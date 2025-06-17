@@ -34,8 +34,8 @@ VALIDATE(){
     fi
 }
 
-#for  PACKAGE in ${PACKAGE[@]}
-for PACKAGE in $@ #$@ Represents all arguments passed to the script as separate words
+for  PACKAGE in ${PACKAGE[@]}
+#for PACKAGE in $@ #$@ Represents all arguments passed to the script as separate words
 do
     dnf list installed $PACKAGE &>> $LOG_FILE
     if [ $? -ne 0 ]
