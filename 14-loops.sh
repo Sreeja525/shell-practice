@@ -34,16 +34,16 @@ VALIDATE(){
     fi
 }
 
-for  PACKAGE in ${PACKAGE[@]}
+for  package  in $@
 #for PACKAGE in $@ #$@ Represents all arguments passed to the script as separate words
 do
-    dnf list installed $PACKAGE &>> $LOG_FILE
+    dnf list installed $package  &>> $LOG_FILE
     if [ $? -ne 0 ]
     then 
-        echo -e " $Y $PACKAGE is not installed.. going to install it $N" | tee -a $LOG_FILE
-        dnf install $PACKAGE -y
-        VALIDATE $? "$PACKAGE"
+        echo -e " $Y $package  is not installed.. going to install it $N" | tee -a $LOG_FILE
+        dnf install $package  -y
+        VALIDATE $? "$package "
     else
-        echo -e " $G $PACKAGE is already installed $N" | tee -a $LOG_FILE
+        echo -e " $G $package  is already installed $N" | tee -a $LOG_FILE
     fi
 done
