@@ -33,8 +33,8 @@ VALIDATE(){
         exit 1 #give other than 0 upto 127
     fi
 }
-
-for  package  in $@
+for package in ${PACKAGES[@]}
+#for  package  in $@
 #for PACKAGE in $@ #$@ Represents all arguments passed to the script as separate words
 do
     dnf list installed $package  &>> $LOG_FILE
@@ -44,6 +44,6 @@ do
         dnf install $package  -y
         VALIDATE $? "$package "
     else
-        echo -e " $G $package  is already installed $N" | tee -a $LOG_FILE
+        echo -e " $G $PACKAGE is already installed $N" | tee -a $LOG_FILE
     fi
 done
